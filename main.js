@@ -435,79 +435,7 @@ function initTilt() {
 
   tick();
 })();
-/* ══════════════════════════════════════════════
-   6. THREE.JS PARTICLE BACKGROUND
-   ══════════════════════════════════════════════ */
-(function () {
-  var scene    = new THREE.Scene();
-  var cam      = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 0.1, 1000);
-  cam.position.z = 30;
-  var canvas   = document.getElementById('bg-canvas');
-  var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
-  renderer.setSize(innerWidth, innerHeight);
-  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 
-  var COUNT = 100, pData = [];
-  var geo = new THREE.BufferGeometry();
-  var pos = new Float32Array(COUNT * 3);
-  for (var i = 0; i < COUNT; i++) {
-    pos[i*3]   = (Math.random()-.5)*80;
-    pos[i*3+1] = (Math.random()-.5)*50;
-    pos[i*3+2] = (Math.random()-.5)*20;
-    pData.push({ vx:(Math.random()-.5)*.010, vy:(Math.random()-.5)*.006, i:i });
-  }
-  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-  var ptMat = new THREE.PointsMaterial({ color:0x6c63ff, size:0.24, transparent:true, opacity:0.28, sizeAttenuation:true });
-  scene.add(new THREE.Points(geo, ptMat));
-
-  var lBuf = new Float32Array(COUNT*COUNT*6);
-  var lGeo = new THREE.BufferGeometry();
-  var lMat = new THREE.LineBasicMaterial({ color:0x6c63ff, transparent:true, opacity:0.06 });
-  var lSegs = new THREE.LineSegments(lGeo, lMat);
-  scene.add(lSegs);
-
-  function applyTheme() {
-    var dark = document.documentElement.getAttribute('data-theme') === 'dark';
-    renderer.setClearColor(dark ? 0x0c0c10 : 0xf5f4f0, 1);
-    ptMat.color.set(dark ? 0xa78bfa : 0x6c63ff); ptMat.opacity = dark ? 0.35 : 0.25;
-    lMat.color.set(dark ? 0xa78bfa : 0x6c63ff);  lMat.opacity  = dark ? 0.09 : 0.06;
-  }
-  applyTheme();
-  window.bgApplyTheme = applyTheme;
-
-  var mx3=0, my3=0;
-  document.addEventListener('mousemove', function(e) {
-    mx3 = (e.clientX/innerWidth-.5)*2; my3 = -(e.clientY/innerHeight-.5)*2;
-  });
-
-  (function tick() {
-    requestAnimationFrame(tick);
-    var p = geo.attributes.position.array;
-    pData.forEach(function(d) {
-      p[d.i*3]   += d.vx; if(p[d.i*3]>40)p[d.i*3]=-40; if(p[d.i*3]<-40)p[d.i*3]=40;
-      p[d.i*3+1] += d.vy; if(p[d.i*3+1]>25)p[d.i*3+1]=-25; if(p[d.i*3+1]<-25)p[d.i*3+1]=25;
-    });
-    geo.attributes.position.needsUpdate = true;
-    var lc=0;
-    for(var a=0;a<COUNT;a++) for(var b=a+1;b<COUNT;b++) {
-      var dx=p[a*3]-p[b*3],dy=p[a*3+1]-p[b*3+1],dz=p[a*3+2]-p[b*3+2];
-      if(Math.sqrt(dx*dx+dy*dy+dz*dz)<8 && lc<lBuf.length/6) {
-        lBuf[lc*6]=p[a*3];lBuf[lc*6+1]=p[a*3+1];lBuf[lc*6+2]=p[a*3+2];
-        lBuf[lc*6+3]=p[b*3];lBuf[lc*6+4]=p[b*3+1];lBuf[lc*6+5]=p[b*3+2]; lc++;
-      }
-    }
-    lGeo.setAttribute('position', new THREE.BufferAttribute(lBuf.slice(0,lc*6),3));
-    cam.position.x += (mx3*3-cam.position.x)*0.02;
-    cam.position.y += (my3*2-cam.position.y)*0.02;
-    cam.lookAt(scene.position);
-    renderer.render(scene,cam);
-  })();
-
-  window.addEventListener('resize', function() {
-    cam.aspect = innerWidth/innerHeight; cam.updateProjectionMatrix();
-    renderer.setSize(innerWidth, innerHeight);
-  });
-})();
 
 /* ══════════════════════════════════════════════
    7. SLIDE NAVIGATION
@@ -613,4 +541,680 @@ function initTilt() {
 
     initTilt();
   });
+})();
+
+
+
+
+
+
+
+(function () {
+  var scene = new THREE.Scene();
+
+  var cam = new THREE.PerspectiveCamera(
+    55,
+    innerWidth / innerHeight,
+    0.1,
+    1000
+  );
+
+  cam.position.z = 30;
+
+  var canvas = document.getElementById('bg-canvas');
+
+  var renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    antialias: true,
+    alpha: true
+  });
+
+  renderer.setSize(innerWidth, innerHeight);
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+
+  /* ═══════════════════════════════════════
+     STAR FIELD
+  ═══════════════════════════════════════ */
+
+  var STAR_COUNT = 650;
+
+  var starGeo = new THREE.BufferGeometry();
+  var positions = new Float32Array(STAR_COUNT * 3);
+
+  var stars = [];
+
+  for (var i = 0; i < STAR_COUNT; i++) {
+
+    var depth = Math.random();
+
+    var radius =
+      18 +
+      depth * 45;
+
+    var angle =
+      Math.random() *
+      Math.PI * 2;
+
+    var vertical =
+      (Math.random() - 0.5) *
+      Math.PI;
+
+    var x =
+      Math.cos(angle) *
+      Math.cos(vertical) *
+      radius;
+
+    var y =
+      Math.sin(vertical) *
+      radius;
+
+    var z =
+      Math.sin(angle) *
+      Math.cos(vertical) *
+      radius;
+
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
+
+    stars.push({
+      x: x,
+      y: y,
+      z: z,
+
+      baseX: x,
+      baseY: y,
+      baseZ: z,
+
+      depth: depth,
+
+      phase:
+        Math.random() *
+        Math.PI * 2,
+
+      twinkle:
+        0.4 +
+        Math.random() * 1.4,
+
+      drift:
+        0.02 +
+        Math.random() * 0.06
+    });
+  }
+
+  starGeo.setAttribute(
+    'position',
+    new THREE.BufferAttribute(
+      positions,
+      3
+    )
+  );
+
+
+  /* ═══════════════════════════════════════
+     STAR MATERIAL
+  ═══════════════════════════════════════ */
+
+  var starMat =
+    new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 0.085,
+      transparent: true,
+      opacity: 0.72,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+
+  var starField =
+    new THREE.Points(
+      starGeo,
+      starMat
+    );
+
+  scene.add(starField);
+
+
+  /* ═══════════════════════════════════════
+     BRIGHT STARS
+  ═══════════════════════════════════════ */
+
+  var BRIGHT_COUNT = 45;
+
+  var brightGeo =
+    new THREE.BufferGeometry();
+
+  var brightPositions =
+    new Float32Array(
+      BRIGHT_COUNT * 3
+    );
+
+  var brightStars = [];
+
+  for (
+    var j = 0;
+    j < BRIGHT_COUNT;
+    j++
+  ) {
+
+    var bx =
+      (Math.random() - 0.5) *
+      70;
+
+    var by =
+      (Math.random() - 0.5) *
+      45;
+
+    var bz =
+      -10 -
+      Math.random() * 35;
+
+    brightPositions[j * 3] = bx;
+    brightPositions[j * 3 + 1] = by;
+    brightPositions[j * 3 + 2] = bz;
+
+    brightStars.push({
+      phase:
+        Math.random() *
+        Math.PI * 2,
+
+      speed:
+        0.4 +
+        Math.random() * 1.2
+    });
+  }
+
+  brightGeo.setAttribute(
+    'position',
+    new THREE.BufferAttribute(
+      brightPositions,
+      3
+    )
+  );
+
+  var brightMat =
+    new THREE.PointsMaterial({
+      color: 0xa78bfa,
+      size: 0.17,
+      transparent: true,
+      opacity: 0.65,
+      depthWrite: false,
+      sizeAttenuation: true
+    });
+
+  var brightField =
+    new THREE.Points(
+      brightGeo,
+      brightMat
+    );
+
+  scene.add(brightField);
+
+
+  /* ═══════════════════════════════════════
+     SOFT NEBULA
+  ═══════════════════════════════════════ */
+
+  var nebulaCanvas =
+    document.createElement(
+      'canvas'
+    );
+
+  nebulaCanvas.width = 512;
+  nebulaCanvas.height = 512;
+
+  var ctx =
+    nebulaCanvas.getContext(
+      '2d'
+    );
+
+  var gradient =
+    ctx.createRadialGradient(
+      256,
+      256,
+      0,
+      256,
+      256,
+      256
+    );
+
+  gradient.addColorStop(
+    0,
+    'rgba(108,99,255,0.16)'
+  );
+
+  gradient.addColorStop(
+    0.3,
+    'rgba(108,99,255,0.08)'
+  );
+
+  gradient.addColorStop(
+    0.65,
+    'rgba(167,139,250,0.025)'
+  );
+
+  gradient.addColorStop(
+    1,
+    'rgba(0,0,0,0)'
+  );
+
+  ctx.fillStyle = gradient;
+  ctx.fillRect(
+    0,
+    0,
+    512,
+    512
+  );
+
+  var nebulaTexture =
+    new THREE.CanvasTexture(
+      nebulaCanvas
+    );
+
+  var nebulaMat =
+    new THREE.SpriteMaterial({
+      map: nebulaTexture,
+      transparent: true,
+      opacity: 0.8,
+      depthWrite: false
+    });
+
+  var nebula =
+    new THREE.Sprite(
+      nebulaMat
+    );
+
+  nebula.scale.set(
+    55,
+    55,
+    1
+  );
+
+  nebula.position.set(
+    -18,
+    5,
+    -35
+  );
+
+  scene.add(nebula);
+
+
+  /* ═══════════════════════════════════════
+     SECOND NEBULA
+  ═══════════════════════════════════════ */
+
+  var nebula2Mat =
+    new THREE.SpriteMaterial({
+      map: nebulaTexture,
+      transparent: true,
+      opacity: 0.35,
+      depthWrite: false
+    });
+
+  var nebula2 =
+    new THREE.Sprite(
+      nebula2Mat
+    );
+
+  nebula2.scale.set(
+    45,
+    45,
+    1
+  );
+
+  nebula2.position.set(
+    22,
+    -12,
+    -45
+  );
+
+  scene.add(nebula2);
+
+
+  /* ═══════════════════════════════════════
+     MOUSE
+  ═══════════════════════════════════════ */
+
+  var mouse = {
+    x: 0,
+    y: 0
+  };
+
+  var targetMouse = {
+    x: 0,
+    y: 0
+  };
+
+  document.addEventListener(
+    'mousemove',
+    function (e) {
+
+      targetMouse.x =
+        (e.clientX / innerWidth - 0.5) * 2;
+
+      targetMouse.y =
+        -(e.clientY / innerHeight - 0.5) * 2;
+    }
+  );
+
+
+  /* ═══════════════════════════════════════
+     THEME
+  ═══════════════════════════════════════ */
+
+  function applyTheme() {
+
+    var dark =
+      document.documentElement
+        .getAttribute(
+          'data-theme'
+        ) === 'dark';
+
+    if (dark) {
+
+      renderer.setClearColor(
+        0x05050a,
+        1
+      );
+
+      starMat.color.set(
+        0xffffff
+      );
+
+      brightMat.color.set(
+        0xa78bfa
+      );
+
+      starMat.opacity =
+        0.72;
+
+      brightMat.opacity =
+        0.7;
+
+      nebulaMat.opacity =
+        0.85;
+
+      nebula2Mat.opacity =
+        0.4;
+
+    } else {
+
+      renderer.setClearColor(
+        0xf5f4f0,
+        1
+      );
+
+      starMat.color.set(
+        0x6c63ff
+      );
+
+      brightMat.color.set(
+        0x6c63ff
+      );
+
+      starMat.opacity =
+        0.16;
+
+      brightMat.opacity =
+        0.25;
+
+      nebulaMat.opacity =
+        0.22;
+
+      nebula2Mat.opacity =
+        0.1;
+    }
+  }
+
+  applyTheme();
+
+  window.bgApplyTheme =
+    applyTheme;
+
+
+  /* ═══════════════════════════════════════
+     ANIMATION
+  ═══════════════════════════════════════ */
+
+  var clock =
+    new THREE.Clock();
+
+  function tick() {
+
+    requestAnimationFrame(
+      tick
+    );
+
+    var time =
+      clock.getElapsedTime();
+
+
+    /* ─────────────────────────
+       SMOOTH MOUSE
+    ───────────────────────── */
+
+    mouse.x +=
+      (
+        targetMouse.x -
+        mouse.x
+      ) * 0.025;
+
+    mouse.y +=
+      (
+        targetMouse.y -
+        mouse.y
+      ) * 0.025;
+
+
+    /* ─────────────────────────
+       STARS
+    ───────────────────────── */
+
+    var p =
+      starGeo.attributes
+        .position.array;
+
+    for (
+      var i = 0;
+      i < STAR_COUNT;
+      i++
+    ) {
+
+      var s =
+        stars[i];
+
+      /*
+       * Slow natural movement.
+       */
+
+      var driftX =
+        Math.sin(
+          time * s.drift +
+          s.phase
+        ) * 0.12;
+
+      var driftY =
+        Math.cos(
+          time * s.drift * 0.8 +
+          s.phase
+        ) * 0.08;
+
+
+      /*
+       * Depth controls
+       * how much the star reacts
+       * to the cursor.
+       */
+
+      var parallax =
+        0.15 +
+        s.depth * 0.9;
+
+      p[i * 3] =
+        s.baseX +
+        driftX +
+        mouse.x *
+        parallax;
+
+      p[i * 3 + 1] =
+        s.baseY +
+        driftY +
+        mouse.y *
+        parallax;
+
+      p[i * 3 + 2] =
+        s.baseZ;
+    }
+
+    starGeo.attributes
+      .position
+      .needsUpdate = true;
+
+
+    /* ─────────────────────────
+       STAR FIELD ROTATION
+    ───────────────────────── */
+
+    starField.rotation.y =
+      Math.sin(
+        time * 0.025
+      ) * 0.025;
+
+    starField.rotation.x =
+      Math.cos(
+        time * 0.02
+      ) * 0.012;
+
+
+    /* ─────────────────────────
+       BRIGHT STAR TWINKLE
+    ───────────────────────── */
+
+    brightStars.forEach(
+      function (s, i) {
+
+        var pulse =
+          (
+            Math.sin(
+              time *
+              s.speed +
+              s.phase
+            ) + 1
+          ) / 2;
+
+        /*
+         * Only subtle variation.
+         */
+
+        brightMat.opacity =
+          0.55 +
+          pulse * 0.18;
+      }
+    );
+
+
+    /* ─────────────────────────
+       NEBULA BREATHING
+    ───────────────────────── */
+
+    var breath =
+      1 +
+      Math.sin(
+        time * 0.08
+      ) * 0.035;
+
+    nebula.scale.set(
+      55 * breath,
+      55 * breath,
+      1
+    );
+
+    nebula.position.x =
+      -18 +
+      Math.sin(
+        time * 0.025
+      ) * 3;
+
+    nebula.position.y =
+      5 +
+      Math.cos(
+        time * 0.02
+      ) * 2;
+
+
+    nebula2.position.x =
+      22 +
+      Math.cos(
+        time * 0.02
+      ) * 3;
+
+    nebula2.position.y =
+      -12 +
+      Math.sin(
+        time * 0.018
+      ) * 2;
+
+
+    /* ─────────────────────────
+       CAMERA PARALLAX
+    ───────────────────────── */
+
+    cam.position.x +=
+      (
+        mouse.x * 2.0 -
+        cam.position.x
+      ) * 0.018;
+
+    cam.position.y +=
+      (
+        mouse.y * 1.4 -
+        cam.position.y
+      ) * 0.018;
+
+    cam.lookAt(
+      scene.position
+    );
+
+
+    /* ─────────────────────────
+       RENDER
+    ───────────────────────── */
+
+    renderer.render(
+      scene,
+      cam
+    );
+  }
+
+  tick();
+
+
+  /* ═══════════════════════════════════════
+     RESIZE
+  ═══════════════════════════════════════ */
+
+  window.addEventListener(
+    'resize',
+    function () {
+
+      cam.aspect =
+        innerWidth /
+        innerHeight;
+
+      cam.updateProjectionMatrix();
+
+      renderer.setSize(
+        innerWidth,
+        innerHeight
+      );
+
+      renderer.setPixelRatio(
+        Math.min(
+          devicePixelRatio,
+          2
+        )
+      );
+    }
+  );
+
 })();

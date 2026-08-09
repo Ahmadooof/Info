@@ -1,34 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahmad Anbarje — Portfolio</title>
-  
-  <link
-  
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <div id="cursor-dot"></div>
-  <div id="cursor-glow"></div>
   <canvas id="bg-canvas"></canvas>
-
-  <button id="theme-toggle" aria-label="Toggle dark mode">
-    
-  </button>
-
-  <!-- Persistent elegant clock -->
-  <div id="persistent-clock">
-    <canvas id="clock-canvas"></canvas>
-    <div id="clock-time-label"></div>
-    <div id="clock-tz-label">UTC +4 · Abu Dhabi</div>
-  </div>
 
   <nav id="dot-nav">
     <div class="dot active" data-index="0" data-label="Home"></div>
@@ -55,344 +35,342 @@
 
   <main id="slides-wrapper">
 
-    <!-- 00 · HOME -->
-    <section class="slide active" id="slide-0">
-      <div class="slide-inner hero-inner">
-        <div class="hero-tag"><span id="typed-role"></span><span class="typed-cur">|</span></div>
-<h1 class="hero-name">
-  <span class="name-row">
-    <span class="arabic-signature" lang="ar" dir="rtl">أَحمَدُ</span>
-    <span class="line">Ahmad</span>
-  </span>
-
-  <span class="line name-last">Anbarje</span>
-</h1>
 
 
+<section class="slide active" id="slide-0">
+  <div class="slide-inner hero-inner">
+    <div class="hero-tag">
+      <span id="typed-role">Software Developer</span>
+      <span class="typed-cur">|</span>
+    </div>
+    <h1 class="hero-name">
+      <span class="line name-first">Ahmad</span>
+      <span class="line name-last">Anbarje</span>
+    </h1>
+    <div class="hero-meta">
+      <span>
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f1e6-1f1ea.svg" alt="UAE">
+        Based in Abu Dhabi, UAE
+      </span>
+    </div>
+    <div class="hero-meta">
+      <span>
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f1f8-1f1ea.svg" alt="Sweden">
+        <img src="https://flagcdn.com/w40/sy.png" alt="Syria">
+        Nationalities: Swedish &amp; Syrian
+      </span>
+    </div>
+    <div class="hero-links">
+      <a href="tel:+971505919390" class="pill">+971 505 919 390</a>
+      <a href="mailto:ahmad.anbarje@gmail.com" class="pill">Email</a>
+      <a href="https://www.linkedin.com/in/ahmad-anbarje-5103b0153/" target="_blank" rel="noopener" class="pill">LinkedIn</a>
+      <a href="https://www.kaggle.com/ahmadooof" target="_blank" rel="noopener" class="pill">Kaggle</a>
+      <a href="https://github.com/Ahmadooof" target="_blank" rel="noopener" class="pill">GitHub</a>
+    </div>
+  </div>
+</section>
 
-        <p class="hero-sub">5+ years building across cloud, DevOps &amp; machine learning</p>
-        <div class="hero-meta">
-          <span>📍 Abu Dhabi, UAE</span>
 
+
+
+<section class="slide" id="slide-1">
+  <div class="slide-inner">
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-summary glass-card">
+        <p>Software developer with <strong>5+ years of experience</strong> across software development, system integration, cloud, DevOps, and machine learning.</p>
+        <p>Proven track record in the <strong>oil &amp; petroleum sector</strong>, with strong skills across multiple languages and cloud platforms.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-block">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Years Exp.</span>
         </div>
-        <div class="hero-meta">
-
-          <span>Swedish &amp; Syrian</span>
+        <div class="stat-block">
+          <span class="stat-num">20+</span>
+          <span class="stat-label">Technologies</span>
         </div>
-        <div class="hero-links">
-          <a href="mailto:ahmad.anbarje@gmail.com" class="pill">Email</a>
-          <a href="tel:+971505919390" class="pill">+971 505 919 390</a>
-          <a href="https://www.linkedin.com/in/ahmad-anbarje-5103b0153/" target="_blank" class="pill">LinkedIn</a>
-          <a href="https://www.kaggle.com/ahmadooof" target="_blank" class="pill">Kaggle</a>
+        <div class="stat-block">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Languages</span>
         </div>
       </div>
-    </section>
-
-    <!-- 01 · ABOUT -->
-    <section class="slide" id="slide-1">
-      <div class="slide-inner">
-        
-        <h2 class="section-title">Who I Am</h2>
-        <div class="about-grid">
-          <div class="about-summary glass-card tilt-el">
-            <p>Software developer with <strong>5+ years of experience</strong> across software development, system
-              integration, cloud, DevOps, and machine learning.</p>
-            <p>Proven track record in the <strong>oil &amp; petroleum sector</strong>, with strong skills across
-              multiple languages and cloud platforms.</p>
-          </div>
-          <div class="about-stats">
-            <div class="stat-block tilt-el"><span class="stat-num">5+</span><span class="stat-label">Years Exp.</span>
-            </div>
-            <div class="stat-block tilt-el"><span class="stat-num">20+</span><span
-                class="stat-label">Technologies</span></div>
-            <div class="stat-block tilt-el"><span class="stat-num">4</span><span
-                class="stat-label">Certifications</span></div>
-            <div class="stat-block tilt-el"><span class="stat-num">3</span><span class="stat-label">Languages</span>
-            </div>
-          </div>
-          <div class="about-langs glass-card tilt-el">
-            <div class="lang-item">
-              <span class="lang-flag">🇸🇦</span>
-              <span class="lang-name">Arabic</span>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:100%"></div>
-              </div>
-              <span class="lang-level">Native</span>
-            </div>
-            <div class="lang-item">
-              <span class="lang-flag">🇬🇧</span>
-              <span class="lang-name">English</span>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:90%"></div>
-              </div>
-              <span class="lang-level">Fluent</span>
-            </div>
-            <div class="lang-item">
-              <span class="lang-flag">🇸🇪</span>
-              <span class="lang-name">Swedish</span>
-              <div class="lang-bar">
-                <div class="lang-fill" style="width:75%"></div>
-              </div>
-              <span class="lang-level">Advanced</span>
-            </div>
-          </div>
+      <div class="about-langs glass-card">
+        <div class="lang-item">
+          <span class="lang-flag">🇸🇦</span>
+          <span class="lang-name">Arabic</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+          <span class="lang-level">Native</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-flag">🇬🇧</span>
+          <span class="lang-name">English</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:90%"></div></div>
+          <span class="lang-level">Fluent</span>
+        </div>
+        <div class="lang-item">
+          <span class="lang-flag">🇸🇪</span>
+          <span class="lang-name">Swedish</span>
+          <div class="lang-bar"><div class="lang-fill" style="width:75%"></div></div>
+          <span class="lang-level">Advanced</span>
         </div>
       </div>
-    </section>
-
-    <!-- 02 · EXPERIENCE -->
-    <section class="slide" id="slide-2">
-      <div class="slide-inner">
-        
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline-track">
-          <div class="timeline-line"></div>
-          <div class="timeline-item">
-            <div class="timeline-dot current"></div>
-            <div class="timeline-card glass-card tilt-el">
-              <div class="tc-header">
-                <div>
-                  <div class="tc-company">ALMasaood Oil &amp; Petroleum</div>
-                  <div class="tc-role">Software Developer</div>
-                </div>
-                <div class="tc-meta">
-                  <span class="tc-date">Jan 2024 — Present</span>
-                  <span class="tc-location">Abu Dhabi, UAE</span>
-                </div>
-              </div>
-              <ul class="tc-bullets">
-                <li>Led UAE-based projects covering system installation, configuration, integration and process
-                  automation.</li>
-                <li>Built automation scripts in Python and PowerShell to streamline recurring project workflows.</li>
-                <li>Developed Flask-based web applications wrapping PI system automation tools and dashboards.</li>
-              </ul>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-2">
+  <div class="slide-inner">
+    <h2 class="section-title">Experience</h2>
+    <div class="timeline-track">
+      <div class="timeline-line"></div>
+      <div class="timeline-item">
+        <div class="timeline-dot current"></div>
+        <div class="timeline-card glass-card">
+          <div class="tc-header">
+            <div>
+              <div class="tc-company">ALMasaood Oil &amp; Petroleum</div>
+              <div class="tc-role">Software Developer</div>
+            </div>
+            <div class="tc-meta">
+              <span class="tc-date">Jan 2024 — Present</span>
+              <span class="tc-location">Abu Dhabi, UAE</span>
             </div>
           </div>
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card glass-card tilt-el">
-              <div class="tc-header">
-                <div>
-                  <div class="tc-company">Systematiq</div>
-                  <div class="tc-role">System Developer</div>
-                </div>
-                <div class="tc-meta">
-                  <span class="tc-date">Sep 2021 — Sep 2023</span>
-                  <span class="tc-location">Blekinge, Sweden</span>
-                </div>
-              </div>
-              <ul class="tc-bullets">
-                <li>Developed new features and resolved issues across web-based client projects.</li>
-                <li>Stack: C#, .NET, SQL Server, jQuery, JavaScript, Entity Framework, Bootstrap, Azure, Three.JS,
-                  Svelte, Java, Blender.</li>
-              </ul>
-            </div>
-          </div>
+          <ul class="tc-bullets">
+            <li>Led UAE-based projects covering system installation, configuration, integration and process automation.</li>
+            <li>Built automation scripts in Python and PowerShell to streamline recurring project workflows.</li>
+            <li>Developed Flask-based web applications wrapping PI system automation tools and dashboards.</li>
+          </ul>
         </div>
       </div>
-    </section>
-
-    <!-- 03 · EDUCATION -->
-    <section class="slide" id="slide-3">
-      <div class="slide-inner edu-inner">
-        
-        <h2 class="section-title">Education</h2>
-        <div class="edu-card glass-card tilt-el">
-          <div class="edu-icon">🎓</div>
-          <div class="edu-body">
-            <div class="edu-degree">Bachelor's Degree</div>
-            <div class="edu-field">Computer Science</div>
-            <div class="edu-uni">Linnaeus University</div>
-            <div class="edu-location">Växjö, Sweden</div>
-            <div class="edu-dates">September 2018 — September 2020</div>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card glass-card">
+          <div class="tc-header">
+            <div>
+              <div class="tc-company">Systematiq</div>
+              <div class="tc-role">System Developer</div>
+            </div>
+            <div class="tc-meta">
+              <span class="tc-date">Sep 2021 — Sep 2023</span>
+              <span class="tc-location">Blekinge, Sweden</span>
+            </div>
           </div>
-          <div class="edu-deco">
-            <div class="deco-ring r1"></div>
-            <div class="deco-ring r2"></div>
-            <div class="deco-ring r3"></div>
+          <ul class="tc-bullets">
+            <li>Developed new features and resolved issues across web-based client projects.</li>
+            <li>Stack: C#, .NET, SQL Server, jQuery, JavaScript, Entity Framework, Bootstrap, Azure, Three.JS, Svelte, Java, Blender.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-3">
+  <div class="slide-inner edu-inner">
+    <h2 class="section-title">Education</h2>
+    <div class="edu-card glass-card">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-body">
+        <div class="edu-degree">Bachelor's Degree</div>
+        <div class="edu-field">Computer Science</div>
+        <div class="edu-uni">Linnaeus University</div>
+        <div class="edu-location">Växjö, Sweden</div>
+        <div class="edu-dates">September 2018 — September 2020</div>
+      </div>
+      <div class="edu-deco">
+        <div class="deco-ring r1"></div>
+        <div class="deco-ring r2"></div>
+        <div class="deco-ring r3"></div>
+      </div>
+    </div>
+    <p class="edu-note">Computer Science foundations underpinning full-stack development, algorithms, and distributed systems.</p>
+  </div>
+</section>
+<section class="slide" id="slide-4">
+  <div class="slide-inner">
+    <h2 class="section-title">Skills</h2>
+    <div class="skills-section-inner">
+      <div class="skill-clusters">
+        <div class="skill-cluster glass-card">
+          <div class="skill-cluster-label">Backend &amp; Systems</div>
+          <div class="cluster-tags">
+            <span class="tag">Python</span>
+            <span class="tag">C#</span>
+            <span class="tag">Java</span>
+            <span class="tag">.NET / ASP.NET</span>
+            <span class="tag">Flask</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">PowerShell</span>
+            <span class="tag">C++</span>
           </div>
         </div>
-        <p class="edu-note">Computer Science foundations underpinning full-stack development, algorithms, and
-          distributed systems.</p>
-      </div>
-    </section>
-
-    <!-- 04 · SKILLS -->
-    <section class="slide" id="slide-4">
-      <div class="slide-inner">
-        <h2 class="section-title">Skills</h2>
-        <div class="skills-section-inner">
-          <div class="skill-clusters">
-            <div class="skill-cluster glass-card tilt-el">
-              <div class="skill-cluster-label">Backend &amp; Systems</div>
-              <div class="cluster-tags">
-                <span class="tag">Python</span><span class="tag">C#</span><span class="tag">Java</span>
-                <span class="tag">.NET / ASP.NET</span><span class="tag">Flask</span><span class="tag">Node.js</span>
-                <span class="tag">PowerShell</span><span class="tag">C++</span>
-              </div>
-            </div>
-            <div class="skill-cluster glass-card tilt-el">
-              <div class="skill-cluster-label">Frontend</div>
-              <div class="cluster-tags">
-                <span class="tag">JavaScript</span><span class="tag">HTML / CSS</span><span class="tag">React</span>
-                <span class="tag">Angular</span><span class="tag">Svelte</span><span class="tag">jQuery</span>
-                <span class="tag">Bootstrap</span><span class="tag">Three.JS</span>
-              </div>
-            </div>
-            <div class="skill-cluster glass-card tilt-el">
-              <div class="skill-cluster-label">Cloud &amp; DevOps</div>
-              <div class="cluster-tags">
-                <span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">Docker</span>
-                <span class="tag">Kubernetes</span><span class="tag">Terraform</span><span class="tag">Jenkins</span>
-                <span class="tag">GitHub Actions</span><span class="tag">CI/CD</span><span class="tag">Linux</span>
-              </div>
-            </div>
-            <div class="skill-cluster glass-card tilt-el">
-              <div class="skill-cluster-label">Machine Learning Techniques</div>
-              <div class="cluster-tags">
-                <span class="tag">Linear Regression</span>
-                <span class="tag">Logistic Regression</span>
-                <span class="tag">Decision Trees</span>
-                <span class="tag">Random Forest</span>
-                <span class="tag">Neural Networks</span>
-              </div>
-            </div>
-            <div class="skill-cluster glass-card tilt-el">
-              <div class="skill-cluster-label">Databases</div>
-              <div class="cluster-tags">
-                <span class="tag">SQL Server</span><span class="tag">SQL</span>
-                <span class="tag">Entity Framework</span>
-              </div>
-            </div>
-            <div class="skill-cluster glass-card tilt-el">
-              <div class="skill-cluster-label">Industrial &amp; Other</div>
-              <div class="cluster-tags">
-                <span class="tag">PI System</span><span class="tag">PI AF</span><span class="tag">PI Data Archive</span>
-                <span class="tag">AVEVA</span><span class="tag">REST APIs</span><span class="tag">Git</span><span
-                  class="tag">Blender</span>
-              </div>
-            </div>
+        <div class="skill-cluster glass-card">
+          <div class="skill-cluster-label">Frontend</div>
+          <div class="cluster-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">React</span>
+            <span class="tag">Angular</span>
+            <span class="tag">Svelte</span>
+            <span class="tag">jQuery</span>
+            <span class="tag">Bootstrap</span>
+            <span class="tag">Three.JS</span>
           </div>
-          <div class="projects-row">
-            <div class="project-card glass-card tilt-el">
-              <div class="project-name">PI Automation Suite</div>
-              <div class="project-desc">Flask dashboard wrapping PI system config &amp; automation scripts.</div>
-              <div class="project-tags-row">
-                <span class="project-tag">Flask</span><span class="project-tag">Python</span><span
-                  class="project-tag">PI AF</span>
-              </div>
-            </div>
-            <div class="project-card glass-card tilt-el">
-              <div class="project-name">Kaggle ML Projects</div>
-              <div class="project-desc">Machine learning experiments covering linear regression, logistic regression, classification, and neural networks.</div>
-              <div class="project-tags-row">
-                <span class="project-tag">Linear Regression</span>
-                <span class="project-tag">Logistic Regression</span>
-                <span class="project-tag">Classification</span>
-                <span class="project-tag">Neural Networks</span>
-                <span class="project-tag">Pandas</span>
-                <span class="project-tag">scikit-learn</span>
-              </div>
-            </div>
-            <div class="project-card glass-card tilt-el">
-              <div class="project-name">Network Monitoring</div>
-              <div class="project-desc">Passive network traffic analysis, device discovery, and request monitoring</div>
-              <div class="project-tags-row">
-                <span class="project-tag">Python</span>
-                <span class="project-tag">Wi-Fi</span>
-                <span class="project-tag">DHCP</span>
-                <span class="project-tag">DNS</span>
-                <span class="project-tag">Packet Analysis</span>
-              </div>
-            </div>
+        </div>
+        <div class="skill-cluster glass-card">
+          <div class="skill-cluster-label">Cloud &amp; DevOps</div>
+          <div class="cluster-tags">
+            <span class="tag">AWS</span>
+            <span class="tag">Azure</span>
+            <span class="tag">Docker</span>
+            <span class="tag">Kubernetes</span>
+            <span class="tag">Terraform</span>
+            <span class="tag">Jenkins</span>
+            <span class="tag">GitHub Actions</span>
+            <span class="tag">CI/CD</span>
+            <span class="tag">Linux</span>
+          </div>
+        </div>
+        <div class="skill-cluster glass-card">
+          <div class="skill-cluster-label">Machine Learning</div>
+          <div class="cluster-tags">
+            <span class="tag">Linear Regression</span>
+            <span class="tag">Logistic Regression</span>
+            <span class="tag">Decision Trees</span>
+            <span class="tag">Random Forest</span>
+            <span class="tag">Neural Networks</span>
+          </div>
+        </div>
+        <div class="skill-cluster glass-card">
+          <div class="skill-cluster-label">Databases</div>
+          <div class="cluster-tags">
+            <span class="tag">SQL Server</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Entity Framework</span>
+          </div>
+        </div>
+        <div class="skill-cluster glass-card">
+          <div class="skill-cluster-label">Industrial &amp; Other</div>
+          <div class="cluster-tags">
+            <span class="tag">PI System</span>
+            <span class="tag">PI AF</span>
+            <span class="tag">PI Data Archive</span>
+            <span class="tag">AVEVA</span>
+            <span class="tag">REST APIs</span>
+            <span class="tag">Git</span>
+            <span class="tag">Blender</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- 05 · CERTIFICATIONS -->
-    <section class="slide" id="slide-5">
-      <div class="slide-inner">
-        
-        <h2 class="section-title">Certifications</h2>
-        <div class="cert-grid">
-          <div class="cert-card glass-card tilt-el">
-            <div class="cert-accent-line cert-line-osi"></div>
-            <div class="cert-body">
-              <div class="cert-issuer">OSIsoft</div>
-              <div class="cert-title">PI System Basic</div>
-              <div class="cert-desc">Core knowledge of PI components: Edge Data Store (EDS), PI Interfaces, PI
-                Connectors, PI Server, Data Archive, and Asset Framework (AF).</div>
-            </div>
+      <div class="projects-row">
+        <div class="project-card glass-card">
+          <div class="project-name">PI Automation Suite</div>
+          <div class="project-desc">Flask dashboard wrapping PI system config &amp; automation scripts.</div>
+          <div class="project-tags-row">
+            <span class="project-tag">Flask</span>
+            <span class="project-tag">Python</span>
+            <span class="project-tag">PI AF</span>
           </div>
-          <div class="cert-card glass-card tilt-el">
-            <div class="cert-accent-line cert-line-aws"></div>
-            <div class="cert-body">
-              <div class="cert-issuer">Amazon Web Services</div>
-              <div class="cert-title">Certified Developer – Associate</div>
-              <div class="cert-desc">Writing applications with AWS service APIs, AWS CLI, and SDKs; using containers and
-                deploying with CI/CD pipelines.</div>
-            </div>
+        </div>
+        <div class="project-card glass-card">
+          <div class="project-name">Kaggle ML Projects</div>
+          <div class="project-desc">Machine learning experiments covering regression, classification, and neural networks.</div>
+          <div class="project-tags-row">
+            <span class="project-tag">scikit-learn</span>
+            <span class="project-tag">Neural Networks</span>
+            <span class="project-tag">Pandas</span>
           </div>
-          <div class="cert-card glass-card tilt-el">
-            <div class="cert-accent-line cert-line-aws"></div>
-            <div class="cert-body">
-              <div class="cert-issuer">Amazon Web Services</div>
-              <div class="cert-title">Certified Cloud Practitioner</div>
-              <div class="cert-desc">Fundamental understanding of IT services and their uses in the AWS Cloud.</div>
-            </div>
-          </div>
-          <div class="cert-card glass-card tilt-el">
-            <div class="cert-accent-line cert-line-oracle"></div>
-            <div class="cert-body">
-              <div class="cert-issuer">Oracle</div>
-              <div class="cert-title">Certified Developer</div>
-              <div class="cert-desc">Certified fundamentals of Java programming and object-oriented design.</div>
-            </div>
+        </div>
+        <div class="project-card glass-card">
+          <div class="project-name">Network Monitoring</div>
+          <div class="project-desc">Passive network traffic analysis, device discovery, and request monitoring.</div>
+          <div class="project-tags-row">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">DHCP</span>
+            <span class="project-tag">Packet Analysis</span>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- 06 · CONTACT -->
-    <section class="slide" id="slide-6">
-      <div class="slide-inner contact-inner">
-        
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-grid">
-          <a href="mailto:ahmad.anbarje@gmail.com" class="contact-card glass-card tilt-el">
-            <div class="cc-label">Email</div>
-            <div class="cc-value">ahmad.anbarje@gmail.com</div>
-          </a>
-          <a href="tel:+971505919390" class="contact-card glass-card tilt-el">
-            <div class="cc-label">Phone</div>
-            <div class="cc-value">+971 505 919 390</div>
-          </a>
-          <a href="https://www.linkedin.com/in/ahmad-anbarje-5103b0153/" target="_blank"
-            class="contact-card glass-card tilt-el">
-            <div class="cc-label">LinkedIn</div>
-            <div class="cc-value">ahmad-anbarje-5103b0153</div>
-          </a>
-          <a href="https://www.kaggle.com/ahmadooof" target="_blank" class="contact-card glass-card tilt-el">
-            <div class="cc-label">Kaggle</div>
-            <div class="cc-value">kaggle.com/ahmadooof</div>
-          </a>
-        </div>
-        <div class="contact-footer">
-          <span>📍 Abu Dhabi, UAE</span>
-          <span class="dot-sep">·</span>
-          <span>🇸🇪 Swedish &amp; 🇸🇾 Syrian</span>
-          <span class="dot-sep">·</span>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-5">
+  <div class="slide-inner">
+    <h2 class="section-title">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card glass-card">
+        <div class="cert-accent-line"></div>
+        <div class="cert-body">
+          <div class="cert-issuer">OSIsoft</div>
+          <div class="cert-title">PI System Basic</div>
+          <div class="cert-desc">Core knowledge of PI components: Edge Data Store, PI Interfaces, PI Connectors, PI Server, Data Archive, and Asset Framework.</div>
         </div>
       </div>
-    </section>
+      <div class="cert-card glass-card">
+        <div class="cert-accent-line"></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-title">Certified Developer – Associate</div>
+          <div class="cert-desc">Writing applications with AWS service APIs, AWS CLI, and SDKs; using containers and deploying with CI/CD pipelines.</div>
+        </div>
+      </div>
+      <div class="cert-card glass-card">
+        <div class="cert-accent-line"></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Amazon Web Services</div>
+          <div class="cert-title">Certified Cloud Practitioner</div>
+          <div class="cert-desc">Fundamental understanding of IT services and their uses in the AWS Cloud.</div>
+        </div>
+      </div>
+      <div class="cert-card glass-card">
+        <div class="cert-accent-line"></div>
+        <div class="cert-body">
+          <div class="cert-issuer">Oracle</div>
+          <div class="cert-title">Certified Java Developer</div>
+          <div class="cert-desc">Certified fundamentals of Java programming and object-oriented design.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="slide" id="slide-6">
+  <div class="slide-inner contact-inner">
+    <h2 class="section-title">Contact</h2>
+    <div class="contact-grid">
+      <a href="mailto:ahmad.anbarje@gmail.com" class="contact-card glass-card">
+        <div class="cc-label">Email</div>
+        <div class="cc-value">ahmad.anbarje@gmail.com</div>
+      </a>
+      <a href="tel:+971505919390" class="contact-card glass-card">
+        <div class="cc-label">Phone</div>
+        <div class="cc-value">+971 505 919 390</div>
+      </a>
+      <a href="https://www.linkedin.com/in/ahmad-anbarje-5103b0153/" target="_blank" rel="noopener" class="contact-card glass-card">
+        <div class="cc-label">LinkedIn</div>
+        <div class="cc-value">ahmad-anbarje-5103b0153</div>
+      </a>
+      <a href="https://www.kaggle.com/ahmadooof" target="_blank" rel="noopener" class="contact-card glass-card">
+        <div class="cc-label">Kaggle</div>
+        <div class="cc-value">kaggle.com/ahmadooof</div>
+      </a>
+    </div>
+    <div class="contact-footer">
+      <span>📍 Abu Dhabi, UAE</span>
+      <span class="dot-sep">·</span>
+      <span>🇸🇪 Swedish &amp; 🇸🇾 Syrian</span>
+    </div>
+  </div>
+</section>
+
 
   </main>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="main.js"></script>
+  <script src="navigation.js"></script>
+  <script src="balls.js"></script>
 </body>
-
 </html>
